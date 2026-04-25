@@ -1,0 +1,85 @@
+﻿<button id="sound-toggle">ðŸ”Š ON</button>
+
+<div id="root">
+  <div id="page-intro" class="page on">
+    <div style="text-align:center;padding:60px 20px">
+      <div style="font-size:3rem;margin-bottom:8px">âš½</div>
+      <h1>FÃºtbol TÃ¡ctico</h1>
+      <p style="color:#aaa;margin-bottom:10px">Juego de tablero Â· 2 jugadores Â· Blood Bowl style</p>
+      <p style="font-size:10px;color:#555;margin-bottom:26px">ZoC activas Â· Sustituciones Â· Eventos Â· Sonido</p>
+      <button class="btn bg" id="btn-inicio">Nuevo Partido</button>
+    </div>
+  </div>
+  <div id="page-eq1" class="page">
+    <h1 style="margin-bottom:12px">Jugador 1: elige equipo</h1>
+    <div class="eq-grid" id="grid-eq1"></div>
+    <button class="btn bg" id="btn-eq1" disabled>Continuar â†’</button>
+  </div>
+  <div id="page-eq2" class="page">
+    <h1 style="margin-bottom:12px">Jugador 2: elige equipo</h1>
+    <div class="eq-grid" id="grid-eq2"></div>
+    <button class="btn bg" id="btn-eq2" disabled>Continuar â†’</button>
+  </div>
+  <div id="page-draft" class="page">
+    <h1 id="draft-h" style="margin-bottom:8px">Draft</h1>
+    <div class="draft-wrap">
+      <div class="draft-scroll">
+        <div class="bbar">
+          <span style="color:#aaa;font-size:11px">Gasto:</span>
+          <b id="b-gasto" style="color:#f1c40f">0</b>
+          <span style="color:#aaa;font-size:11px">/ 700Mâ‚¬</span>
+          <div class="btrack"><div class="bfill" id="bfill" style="width:0%"></div></div>
+          <span id="b-cnt" style="font-size:11px;font-weight:700;color:#27ae60">0</span>
+        </div>
+        <p style="font-size:9px;color:#555;margin-bottom:6px">
+          <span style="color:#f1c40f">â—</span> Estrella &nbsp;<span style="color:#9b59b6">â—</span> Excelente &nbsp;<span style="color:#3498db">â—</span> Mediocre &nbsp;<span style="color:#666">â—</span> PÃ©simo Â· 11 titulares + banquillo
+        </p>
+        <div id="draft-body"></div>
+      </div>
+      <div class="panel">
+        <div style="font-size:12px;font-weight:700;color:#f1c40f;margin-bottom:6px">Tu plantilla</div>
+        <div class="sqlist" id="sqlist"></div>
+        <button class="btn bg" id="btn-draft" disabled style="width:100%;margin-top:8px">Confirmar âœ“</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="page-partido" class="page">
+    <div class="scbar">
+      <div class="sct"><div class="shield" id="sh0"></div><div><div class="scn" id="scn0">â€”</div><div class="scg" id="scg0">0</div></div></div>
+      <div class="scmid"><div id="sc-info">T1Â·1Âª</div><div style="font-size:14px;color:#333">â€“</div><div id="sc-quien" style="color:#f1c40f;font-weight:700;font-size:10px">â€”</div></div>
+      <div class="sct sctr"><div class="shield" id="sh1"></div><div style="text-align:right"><div class="scn" id="scn1">â€”</div><div class="scg" id="scg1">0</div></div></div>
+    </div>
+    <div id="ev-active"></div>
+    <div class="partido-layout">
+      <div style="background:#111;border-radius:6px;padding:3px;overflow:hidden">
+        <svg id="svg-campo" viewBox="0 0 720 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:3px"></svg>
+      </div>
+      <div class="panel">
+        <div id="pinfo"><span style="color:#444">Selecciona un jugador.</span></div>
+        <div id="zoc-info"></div>
+        <div id="movbar">MOV restante: <b id="mov-n" style="color:#27ae60">0</b><div class="mpips" id="mpips"></div></div>
+        <div id="acciones"></div>
+        <div class="info-sust">Sustituciones: <b id="sust-cnt0">3</b> / <b id="sust-cnt1">3</b></div>
+        <div id="banquillo-wrap">
+          <div><div class="bq-title" id="bq-title0">Banquillo J1</div><div class="banquillo-panel" id="banquillo0"></div></div>
+          <div><div class="bq-title" id="bq-title1">Banquillo J2</div><div class="banquillo-panel" id="banquillo1"></div></div>
+        </div>
+        <div style="font-size:9px;color:#444;margin-bottom:3px">â–¼ Registro</div>
+        <div id="logbox"></div>
+        <button class="btn bgr sm" id="btn-turno">Pasar turno â€º</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="page-res" class="page">
+    <div id="res-ico" style="font-size:3.5rem;margin-bottom:8px">ðŸ†</div>
+    <h1 id="res-tit">Resultado</h1>
+    <div id="res-score" style="font-size:3rem;font-weight:800;margin:12px 0">0â€“0</div>
+    <p id="res-desc" style="color:#aaa;margin-bottom:24px"></p>
+    <button class="btn bg" id="btn-otra">Nuevo Partido</button>
+  </div>
+
+  <div id="ev-modal"><div id="ev-box"><div id="ev-ico">ðŸ“£</div><div id="ev-tipo">Evento</div><div id="ev-tit">â€”</div><div id="ev-dsc">â€”</div><button class="btn bb" id="btn-ev-ok" style="margin-top:12px">Â¡Entendido!</button></div></div>
+  <div id="sust-modal"><div id="sust-box"><h3>â‡„ SustituciÃ³n</h3><div id="sust-lista"></div><button class="btn bgr sm" id="btn-sust-cancel">Cancelar</button></div></div>
+</div>
